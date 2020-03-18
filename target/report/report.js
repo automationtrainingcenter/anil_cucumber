@@ -14,6 +14,9 @@ formatter.background({
   "description": "",
   "keyword": "Background"
 });
+formatter.before({
+  "status": "passed"
+});
 formatter.step({
   "name": "admin is in bank home page",
   "keyword": "Given "
@@ -150,6 +153,9 @@ formatter.match({
 formatter.result({
   "status": "passed"
 });
+formatter.after({
+  "status": "passed"
+});
 formatter.scenarioOutline({
   "name": "",
   "description": "",
@@ -243,6 +249,9 @@ formatter.background({
   "name": "",
   "description": "",
   "keyword": "Background"
+});
+formatter.before({
+  "status": "passed"
 });
 formatter.step({
   "name": "admin is in bank home page",
@@ -377,10 +386,16 @@ formatter.match({
 formatter.result({
   "status": "passed"
 });
+formatter.after({
+  "status": "passed"
+});
 formatter.background({
   "name": "",
   "description": "",
   "keyword": "Background"
+});
+formatter.before({
+  "status": "passed"
 });
 formatter.step({
   "name": "admin is in bank home page",
@@ -515,10 +530,16 @@ formatter.match({
 formatter.result({
   "status": "passed"
 });
+formatter.after({
+  "status": "passed"
+});
 formatter.background({
   "name": "",
   "description": "",
   "keyword": "Background"
+});
+formatter.before({
+  "status": "passed"
 });
 formatter.step({
   "name": "admin is in bank home page",
@@ -651,6 +672,9 @@ formatter.match({
   "location": "BranchCreationSteps.admin_can_see_an_alert_message_saying_branch_created_successfully()"
 });
 formatter.result({
+  "status": "passed"
+});
+formatter.after({
   "status": "passed"
 });
 });

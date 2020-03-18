@@ -1,0 +1,29 @@
+[
+  {
+    "employeeName": "jsonEmpOne",
+    "password": "passOne",
+    "roleType": "newAdminRole",
+    "branchName": "testBranch"
+  },
+  
+  {
+    "employeeName": "jsonEmpTwo",
+    "password": "passTwo",
+    "roleType": "newAdminRole",
+    "branchName": "testBranch"
+  },
+  
+  {
+    "employeeName": "jsonEmpThree",
+    "password": "passThree",
+    "roleType": "newAdminRole",
+    "branchName": "testBranch"
+  },
+  
+  {
+    "employeeName": "jsonEmpFour",
+    "password": "passFour",
+    "roleType": "newAdminRole",
+    "branchName": "testBranch"
+  }  
+]

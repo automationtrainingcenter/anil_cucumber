@@ -7,7 +7,7 @@ import cucumber.api.java.en.When;
 public class LoginSteps {
 	@Given("admin is in bank home page")
 	public void admin_is_in_bank_home_page() {
-		System.out.println("launch browser");
+//		System.out.println("launch browser");
 
 	}
 
