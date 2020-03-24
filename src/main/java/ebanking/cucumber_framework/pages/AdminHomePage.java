@@ -6,13 +6,10 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
-public class AdminHomePage {
-	
-	private WebDriver driver;
+public class AdminHomePage extends BasePage{
 	
 	public AdminHomePage(WebDriver driver) {
-		this.driver = driver;
-		PageFactory.initElements(driver, this);
+		super(driver);
 	} 
 	
 	// home
@@ -37,30 +34,35 @@ public class AdminHomePage {
 	
 	
 	// click home button
-	public void clickHome() {
-		this.btnHome.click();
+	public AdminHomePage clickHome() {
+		commonFunctions.click(btnHome);
+		return this;
 	}
 	
 	
 	// click logout button
-	public void clickLogout() {
-		this.btnLogout.click();
+	public BankHomePage clickLogout() {
+		commonFunctions.click(btnLogout);
+		return PageFactory.initElements(driver, BankHomePage.class);
 	}
 	
 	
 	// click branches button
-	public void clickBranches() {
-		this.btnBranches.click();
+	public BranchDetailsPage clickBranches() {
+		commonFunctions.click(btnBranches);
+		return PageFactory.initElements(driver, BranchDetailsPage.class);
 	}
 	
 	// click  roles button
-	public void clickRoles() {
-		this.btnRoles.click();
+	public RoleDetailsPage clickRoles() {
+		commonFunctions.click(btnRoles);
+		return PageFactory.initElements(driver, RoleDetailsPage.class);
 	}
 	
 	// click employee button
-	public void clickEmployee() {
-		this.btnEmployee.click();
+	public EmployeeDetailsPage clickEmployee() {
+		commonFunctions.click(btnEmployee);
+		return PageFactory.initElements(driver, EmployeeDetailsPage.class);
 	}
 
 }

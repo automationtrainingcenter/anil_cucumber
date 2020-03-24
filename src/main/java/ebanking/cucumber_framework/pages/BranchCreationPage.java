@@ -1,5 +1,6 @@
 package ebanking.cucumber_framework.pages;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -7,14 +8,10 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
-public class BranchCreationPage {
-	
-	private WebDriver driver;
-	
+public class BranchCreationPage extends BasePage{
 	
 	public BranchCreationPage(WebDriver driver) {
-		this.driver = driver;
-		PageFactory.initElements(driver, this);
+		super(driver);
 	}
 	
 	
@@ -60,52 +57,55 @@ public class BranchCreationPage {
 	
 	// fill branch name
 	public void fillBranchName(String branchName) {
-		this.txtBranchName.sendKeys(branchName);
+		commonFunctions.type(txtBranchName, branchName);
 	}
 	
 	
 	// fill address 1
 	public void fillAddress1(String address1) {
-		this.txtAddress1.sendKeys(address1);
+		commonFunctions.type(txtAddress1, address1);
 	}
 	
 	// fill zip code
 	public void fillZipcode(String zipcode) {
-		this.txtZipcode.sendKeys(zipcode);
+		commonFunctions.type(txtZipcode, zipcode);
 	}
 	
 	// select country
 	public void selectCountry(String country) {
 //		Select countrySelect = new Select(this.ddCountry);
 //		countrySelect.selectByVisibleText(country);
-		new Select(this.ddCountry).selectByVisibleText(country);
+//		new Select(this.ddCountry).selectByVisibleText(country);
+		commonFunctions.selectOption(ddCountry, country);
 		
 	}
 	
 	// select state
 	public void selectState(String state) {
-		new Select(this.ddState).selectByVisibleText(state);
-		
+		commonFunctions.selectOption(ddState, state);
 	}
 	
 	// select city
 	public void selectCity(String city) {
-		new Select(this.ddCity).selectByVisibleText(city);
+		commonFunctions.selectOption(ddCity, city);
 	}
 	
 	// click submit
-	public void clickSubmit() {
-		this.btnSubmit.click();
+	public Alert clickSubmit() {
+		commonFunctions.click(btnSubmit);
+		return this.driver.switchTo().alert();
 	}
 	
 	// click reset
-	public void clickReset() {
-		this.btnReset.click();
+	public BranchCreationPage clickReset() {
+		commonFunctions.click(btnReset);
+		return this;
 	}
 	
 	// click cancel
-	public void clickCancel() {
-		this.btnCancel.click();
+	public BranchDetailsPage clickCancel() {
+		commonFunctions.click(btnCancel);
+		return PageFactory.initElements(driver, BranchDetailsPage.class);
 	}
 	
 	

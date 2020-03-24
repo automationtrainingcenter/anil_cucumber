@@ -5,13 +5,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class BranchDetailsPage {
-
-	private WebDriver driver;
+public class BranchDetailsPage extends BasePage{
 
 	public BranchDetailsPage(WebDriver driver) {
-		this.driver = driver;
-		PageFactory.initElements(driver, this);
+		super(driver);
 	}
 
 	// new branch button
@@ -19,8 +16,9 @@ public class BranchDetailsPage {
 	private WebElement btnNewBranch;
 
 	// click new branch button
-	public void clickNewBranch() {
-		this.btnNewBranch.click();
+	public BranchCreationPage clickNewBranch() {
+		commonFunctions.click(btnNewBranch);
+		return PageFactory.initElements(driver, BranchCreationPage.class);
 	}
 
 }
