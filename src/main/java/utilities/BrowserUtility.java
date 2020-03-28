@@ -1,5 +1,7 @@
 package utilities;
 
+import java.io.File;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -9,7 +11,7 @@ public class BrowserUtility {
 
 	public void launchBrowser(String browserName, String url) {
 		if (browserName.equalsIgnoreCase("chrome")) {
-			System.setProperty("webdriver.chrome.driver", ".//drivers//chormedriver.exe");
+			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+File.separator+"drivers"+File.separator+"chromedriver.exe");
 			driver = new ChromeDriver();
 		} else if (browserName.equalsIgnoreCase("firefox")) {
 			System.setProperty("webdriver.gecko.driver", ".//drivers//geckodriver.exe");

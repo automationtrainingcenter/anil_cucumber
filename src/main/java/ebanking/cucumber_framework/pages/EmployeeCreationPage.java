@@ -78,5 +78,11 @@ public class EmployeeCreationPage extends BasePage {
 		commonFunctions.click(btnCancel);
 		return PageFactory.initElements(driver, EmployeeDetailsPage.class);
 	}
+	
+	
+	// is form empty
+	public boolean isFormEmpty() {
+		return this.txtEmployeeName.getAttribute("value").isEmpty();
+	}
 
 }

@@ -42,9 +42,9 @@ public class CommonSteps extends BrowserUtility{
 		
 		if(scenario.isFailed()) {
 			// capture screenshot using Selenium getScreenshotAs(OutputType.BYTES)
-//			scenario.embed(byte[], "png");
+//			scenario.embed(byte[], "image/png");
 			CommonFunctions commonFunctions = new CommonFunctions(driver);
-			scenario.embed(commonFunctions.captureScreenshot(driver), "png");
+			scenario.embed(commonFunctions.captureScreenshot(driver), "image/png");
 		}
 	}
 

@@ -1,23 +1,26 @@
 package stepdefinitions;
 
+import org.junit.Assert;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import ebanking.cucumber_framework.pages.AdminHomePage;
 import ebanking.cucumber_framework.pages.BankHomePage;
 
 public class LoginSteps {
 	BankHomePage bankHomePage;
 	private WebDriver driver;
 	private CommonSteps commonSteps;
-	
+
 	public LoginSteps(CommonSteps commonSteps) {
 		this.commonSteps = commonSteps;
 		this.driver = this.commonSteps.getDriver();
 	}
-	
-	
+
 	@Given("admin is in bank home page")
 	public void admin_is_in_bank_home_page() {
 //		System.out.println("launch browser");
@@ -42,7 +45,8 @@ public class LoginSteps {
 
 	@Then("admin can see welcome to admin message with logout link")
 	public void admin_can_see_welcome_to_admin_message_with_logout_link() {
-		System.out.println("logout link displayed");
+		AdminHomePage adminHomePage = PageFactory.initElements(driver, AdminHomePage.class);
+		Assert.assertTrue(!adminHomePage.isLogoutDisplayed());
 	}
 
 	@When("admin enters invalid username")
@@ -52,6 +56,9 @@ public class LoginSteps {
 
 	@Then("admin can see an error message saying incorrect bankname or password")
 	public void admin_can_see_an_error_message_saying_incorrect_bankname_or_password() {
-		System.out.println("error message displayed");
+		Alert alert = driver.switchTo().alert();
+		String alertText = alert.getText();
+		alert.accept();
+		Assert.assertTrue(alertText.toLowerCase().contains("incorrect"));
 	}
 }

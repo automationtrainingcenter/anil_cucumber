@@ -18,7 +18,7 @@ public class RoleCreationPage extends BasePage {
 	private WebElement txtRoleName;
 
 	// role type
-	@FindBy(how = How.ID, using = "txtRname")
+	@FindBy(how = How.ID, using = "lstRtypeN")
 	private WebElement ddRoleType;
 
 	// submit
@@ -59,6 +59,11 @@ public class RoleCreationPage extends BasePage {
 	public RoleDetailsPage clickCancel() {
 		commonFunctions.click(btnCancel);
 		return PageFactory.initElements(driver, RoleDetailsPage.class);
+	}
+	
+	// is Form empty
+	public boolean isFormEmpty() {
+		return this.txtRoleName.getAttribute("value").isEmpty();
 	}
 
 }

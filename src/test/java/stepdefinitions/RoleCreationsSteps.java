@@ -1,5 +1,6 @@
 package stepdefinitions;
 
+import org.junit.Assert;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -61,7 +62,9 @@ public class RoleCreationsSteps {
 
 	@Then("admin can see an alert message saying role created successfully")
 	public void admin_can_see_an_alert_message_saying_role_created_successfully() {
-		System.out.println("alert came");
+		String alertText = alert.getText();
+		alert.accept();
+		Assert.assertTrue(alertText.toLowerCase().contains("new role"));
 	}
 
 	@When("admin fills invalid role name")
@@ -71,7 +74,11 @@ public class RoleCreationsSteps {
 
 	@Then("admin can see an error messag")
 	public void admin_can_see_an_error_messag() {
-		System.out.println("error message came");
+		alert = driver.switchTo().alert();
+		String alertText = alert.getText();
+		alert.accept();
+		Assert.assertTrue(alertText.toLowerCase().contains("alphabets"));
+		
 	}
 
 }

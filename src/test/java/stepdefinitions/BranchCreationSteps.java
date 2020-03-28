@@ -1,5 +1,6 @@
 package stepdefinitions;
 
+import org.junit.Assert;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -73,7 +74,9 @@ public class BranchCreationSteps {
 
 	@Then("admin can see an alert message saying branch created successfully")
 	public void admin_can_see_an_alert_message_saying_branch_created_successfully() {
-		System.out.println("admin can see branch with some id");
+		String alertText = alert.getText();
+		alert.accept();
+		Assert.assertTrue(alertText.toLowerCase().contains("new branch"));
 	}
 
 }

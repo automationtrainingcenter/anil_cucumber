@@ -7,7 +7,7 @@ Feature: Employee creation
     And admin clicks on employee button
     And admin clicks on new employee button
 
-	@dd_datatable
+	@valid @dd_datatable
   Scenario: 
     When admin fills employee form
       | empName        | pass        | roleType     | branchName |

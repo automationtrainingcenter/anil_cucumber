@@ -6,11 +6,11 @@ import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = { "src/test/java/features/branch.feature" }, 
+@CucumberOptions(features = { "src/test/java/features" }, 
 	glue = { "stepdefinitions" }, 
 	dryRun = false,
 	monochrome = true,
-//	tags = {"@dd_json"},
+	tags = {"@valid"},
 	plugin = {"pretty", "html:target/report"}
 )
 public class TestRunner {

@@ -2,6 +2,7 @@ package utilities;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.function.Function;
 
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -17,7 +18,7 @@ public class CommonFunctions {
 
 	public CommonFunctions(WebDriver driver) {
 		this.wait = new WebDriverWait(driver, 10);
-		
+
 	}
 
 	// click
@@ -27,7 +28,7 @@ public class CommonFunctions {
 
 	// select
 	public void selectOption(WebElement element, String optionText) {
-		wait.until(ExpectedConditions.elementSelectionStateToBe(element, true));
+		wait.until(ExpectedConditions.visibilityOf(element));
 		new Select(element).selectByVisibleText(optionText);
 
 	}
@@ -41,18 +42,24 @@ public class CommonFunctions {
 	public void captureScreenshot(WebDriver driver, String folderName, String fileName) {
 		TakesScreenshot ts = (TakesScreenshot) driver;
 		File srcImg = ts.getScreenshotAs(OutputType.FILE);
-		File desImg = new File(System.getProperty("user.dir") + File.separator + folderName + File.separator + fileName);
+		File desImg = new File(
+				System.getProperty("user.dir") + File.separator + folderName + File.separator + fileName);
 		try {
 			FileHandler.copy(srcImg, desImg);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	// capture screenshot to add that to the report
 	public byte[] captureScreenshot(WebDriver driver) {
 		TakesScreenshot ts = (TakesScreenshot) driver;
 		return ts.getScreenshotAs(OutputType.BYTES);
+	}
+
+	// explicit wait function
+	public <R> R explicitWait(Function<WebDriver, R> fn) {
+		return wait.until(fn);
 	}
 
 }
